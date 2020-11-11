@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  chainlink:
+    image: "smartcontract/chainlink:latest"
+    command: local n -p /chainlink/password -a /chainlink/api
+    volumes:
+      - ./:/chainlink
+    ports:
+      - "6688:6688"
+    env_file:
+      - ".env"
+  postgres:
+    image: "postgres"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
